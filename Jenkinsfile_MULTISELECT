@@ -1,0 +1,17 @@
+#!/usr/bin/env groovy
+    node ('Slave-2') {
+       stage('Slack start message') {
+        script {
+        sh 'printenv'
+        }
+    }
+
+scm {
+        git {
+            remote {
+                github('fiksu/client_dashboard_ui', 'ssh')
+                credentials('releaser-fiksu-test')
+            }
+        }
+    }
+        }
